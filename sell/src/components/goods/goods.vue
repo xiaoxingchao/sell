@@ -1,6 +1,6 @@
 <template lang="html">
-  <div id="header">
-    ggggggggggggg
+  <div id="goods">
+    ssssss
   </div>
 </template>
 
