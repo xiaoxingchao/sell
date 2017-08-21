@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <!-- <div class="header">
       i am header;
     </div> -->
-    <div class="tab brder-1px">
+    <div class="tab border-1px">
       <div class="tab-item">
         <router-link to="/goods">商品</router-link>
 
@@ -28,9 +28,23 @@
   </div>
 </template>
 
-<script>
-  import header from './components/header/header.vue'
+<script type="text/ecmascript-6">
+  import header from './components/header/header.vue';
+  const ERR_OK = 0;
   export default {
+    data(){
+      return {
+        seller: {}
+      }
+    },
+    created(){
+      this.$ajax.get('/api/seller').then((reponse)=>{
+        var reponse = reponse.data;
+        if(reponse.errno === ERR_OK){
+          this.seller = reponse.data;
+        }
+      });
+    },
     components:{
       'v-header':header
     }
